@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+
+<div style="text-align: center">
+    <img src="/static/search_img.png" alt="search img" width="150" height="150">
+    <form action="/query" method="POST">
+        <label>Search : </label>
+        <input type="text" placeholder="Enter a Query" name="q" value="{{ q }}">
+        <input type="submit" value="search">
+    </form>
+    <form action="/gen" method="POST">
+        <label>generate files : </label>
+        <input type="text" placeholder="No of files" name="noOfFiles">
+        <input type="submit" value="generate" >
+
+    </form>
+
+</div>
+
+<div style="text-align: center; line-height:5 ">
+
+    {% if submit==1 %}
+        {% if Match==True %}
+            {% for key,value in result.items() %}
+                <div style="font-size: large;">
+                    <a style="display: inline;" href="/{{ key }}">{{ key }} </a> with value={{ value }}
+                </div>
+            {% endfor %}</div>
+        {% else %}
+            <h1 style="background-color: red"> No Match Found !!!</h1>
+        {% endif %}
+
+
+
+    {% endif %}
+
+</body>
+</html>

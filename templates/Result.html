@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+            {% if Match==True %}
+
+                <div style="text-align: left; line-height:3">
+                <ul style="font-size: large;font-weight: bold">Cousin Similarity Results</ul>
+
+                        {% for key,value in result.items() %}
+                            <div style="font-size: large;">
+                            <a style="display: inline;" href="/{{key}}">{{ key }} </a> with value={{ value }}
+                            </div>
+                        {% endfor %}
+                </div>
+                <div style="text-align: left; line-height:3; display:inline-block;">
+                                <ul style="font-size: large;font-weight: bold">Authority Results</ul>
+
+                                {% for key,value in auth_hub_ResultDict.items() %}
+                                    <div style="font-size: large;">
+                                    <a style="display: inline;" href="/{{key}}">{{ key }} </a> with AuthScore={{ value[0] }} and HubScore={{ value[1]}}
+                                    </div>
+                                {% endfor %}
+                </div>
+                    <div style="float: right;display: inline-block;height: 700px;width: 700px;margin: auto 200px;" >
+                                <embed type="image/svg+xml" src="{{graph_data}}" style="width:700px;height: 700px;margin-right: 20px" />
+                    </div>
+                <div  >
+
+                </div>
+
+            {% else %}
+                <h1 style="background-color: red"> No Match Found !!!</h1>
+            {% endif %}
+
+</body>
+</html>
